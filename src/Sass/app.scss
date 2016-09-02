@@ -1,0 +1,358 @@
+// Import Bootstrap
+@import "mixins.scss";
+
+$header-height: 75px;
+$header-white: #ffffff;
+$header-border: #ECECEC;
+$header-grey: #252525;
+$theme-white: #000000;
+$theme-grey: #ffffff;
+$body-grey: #3D3D3D;
+$body-white: #FFFFFF;
+$text-red: #C1272D;
+
+html, body {
+  background-color: $header-white;
+  height: 100%;
+  margin: 0; padding: 0;  /* to avoid scrollbars */
+}
+
+header {
+  background: $header-white;
+  height: $header-height;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 1px $header-border solid;
+
+  .container {
+
+    .logo {
+      float: left;
+      line-height: $header-height;
+
+      img {
+        height: 38px;
+      }
+    }
+
+    .logo-text {
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+      line-height: $header-height;
+      margin-left: 10px;
+      letter-spacing: 1px;
+      color: $theme-white;
+    }
+
+    ul {
+      float: right;
+      list-style-type: none;
+
+      li {
+        float: left;
+        line-height: 75px;
+        padding: 0px 20px;
+        color: $theme-white;
+        text-transform: uppercase;
+        font-weight: bold;
+        display: block;
+
+        .active {
+          color: $text-red;
+        }
+
+        &:last-child {
+          padding-right: 0px;
+        }
+
+        a {
+          text-decoration: none;
+          color: $theme-white;
+
+          &:hover {
+            color: $text-red;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+.page {
+  display: table;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+.movie-content {
+    height: auto;
+}
+
+.col-movie {
+  position: relative;
+}
+
+.movie-cover a {
+  width: 300px;
+}
+
+.col-md-4 {
+  margin-bottom: 50px;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 5px;
+      width: 100%;
+      border-bottom: 1px #ECECEC solid;
+
+      a {
+        color: black;
+        font-weight: bold;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        background: url(https://yts.ag/assets/images/actors/thumb/default_avatar.jpg) center / cover;
+      }
+    }
+  }
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.col-md-8 {
+  margin-bottom: 50px;
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+
+.information {
+    opacity: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0.47);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px 20px 0 20px;
+    @include transition(opacity 0.4s ease-in-out);
+
+    &:hover {
+      opacity: 1;
+    }
+}
+
+
+.btn-movieid {
+  margin-bottom: 30px;
+  a {
+      cursor: pointer;
+      color: white;
+      border: 3px solid white;
+      padding: 11px 70px;
+      width: 100%;
+      text-align: center;
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 16px;
+      letter-spacing: 3px;
+      margin-bottom: 20px !important;
+      text-decoration: none;
+      @include transition(all 0.4s ease-in-out);
+  }
+}
+
+.p-left {
+  padding-left: 24px;
+  margin: 0em
+}
+
+.col-md-6 a:hover {
+ background: white;
+ color: black;
+}
+
+.movie-cover {
+  width: 100%;
+  background: url(http://www.orville.com/images/parallax/img-background.jpg) center / cover !important;
+
+}
+
+.movie-underlay {
+    background: url(/images/bg-header.jpg) center / cover;
+    width: 100%;
+    height: auto;
+}
+
+.movie-cover.top .container .row .col-md-12 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.movie-cover.top .container .row .col-md-12 img {
+    width: 230px;
+    border: 4px solid white;
+}
+
+.top-p {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.fa {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.active {
+  color: #F3CB0B;
+}
+
+.center {
+  text-align: center;
+}
+
+.glyphicon {
+  color: $theme-white;
+}
+
+.glyphicon:hover {
+  color: #C1272D;
+}
+
+h2 {
+  border-left: 3px #C1272D solid;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 26px;
+  color: $body-grey;
+  padding-left: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+h3 {
+  border-left: 3px #C1272D solid;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 22px;
+  color: $body-grey;
+  padding-left: 20px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+
+.header-shadow {
+  @include box-shadow('0px 7px 30px 0px rgba(50, 50, 50, 0.74)');
+  @include opacity(0.99);
+}
+
+.top {
+  padding-top: 90px;
+  padding-bottom: 15px;
+}
+
+.width {
+  width: 100%;
+}
+
+.container.top .col-md-2 {
+    padding: 2px;
+    transform: scale(1);
+    @include transition('transform .3s ease-in-out');
+}
+
+.row {
+  padding-right: 13px;
+  padding-left: 13px;
+}
+
+footer {
+  background-color: $body-grey;
+  color: white;
+  display: table-row;
+  height: 1px;
+
+  .container {
+    padding: 50px;
+
+    .row {
+      padding-left: 0px;
+      padding-right: 0px;
+
+      .col-md-2 {
+        select {
+          width: 100%;
+          height: 40px;
+          color: white;
+          background: transparent;
+          border: 2px white solid;
+          border-radius: 0px !important;
+          outline: none;
+        }
+      }
+    }
+  }
+}
+.fa-star-o {
+  color: #F3CB0B;
+}
+.clear {
+  height: 1px;
+}
+
+.yt-player {
+  height: 420px;
+  width: 60%;
+  border: 0px;
+  display: block;
+  margin: 0 auto;
+}
+
+.no-padding {
+  padding-left: 0.5px;
+  padding-right: 0.5px;
+}
+
+@media only screen and (max-width: 700px) {
+
+  header .container .logo-text {
+    display: none !important;
+  }
+
+  .fa {
+    font-size: 11px;
+  }
+
+  .yt-player {
+    width: 100%;
+    height: 315px;
+  }
+}
