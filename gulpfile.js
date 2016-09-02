@@ -13,29 +13,45 @@ const reload = browserSync.reload;
 const sassGlob = require('gulp-sass-glob');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const $ = gulpLoadPlugins();
+const notifier = require('node-notifier');
+const tap = require('gulp-tap');
+const domain = require('domain');
+const streamify = require('gulp-streamify');
+const es6ify = require('es6ify');
+const concat = require('gulp-concat');
 
 gulp.task('browserify', function () {
-    // set up the browserify instance on a task basis
-    var b = browserify({
-        entries: './src/React/index.js',
-        debug: true
-    }).transform(babelify, {presets: ["es2015", "react"]});
+    gulp.src('src/React/index.js', {read: false})
+        .pipe(tap(function(file) {
+            var d = domain.create();
 
-    return b.bundle()
-        .pipe(source('app.js'))
-        .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        // Add transformation tasks to the pipeline here.
-        .pipe(uglify())
-        .on('error', gutil.log)
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./web/js/'));
+            d.on("error", function(err) {
+                gutil.log(
+                    gutil.colors.red("Browserify compile error:"),
+                    err.message,
+                    "\n\t",
+                    gutil.colors.cyan("in file"),
+                    file.path
+                );
+            });
+
+            d.run(function() {
+                file.contents = browserify({
+                    entries: [file.path]
+                })
+                    .add(es6ify.runtime)
+                    .transform(babelify, {presets: ["es2015", "react"]})
+                    .bundle();
+            });
+        }))
+        .pipe(streamify(concat('app.js')))
+        .pipe(gulp.dest('./web/js'));
 });
 
 gulp.task('styles', function () {
     return gulp.src('src/Sass/**/*.scss')
-        .pipe(sassGlob())
         .pipe($.plumber())
+        .pipe(sassGlob())
         .pipe($.sourcemaps.init())
         .pipe($.sass.sync({
             outputStyle: 'expanded',
