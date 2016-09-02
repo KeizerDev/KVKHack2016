@@ -1,3 +1,11 @@
+/* Timeline colors */
+$color-1: #383838; // Mine Shaft
+$color-2: #7b9d6f; // Highland
+$color-3: #ffffff; // White
+$color-4: #f8f8f8; // Alabaster
+
+
+
 /*
 * Colors
 **/
@@ -29,3 +37,10 @@ $mrgn-big: 25px;
 $border-small: 2px;
 $border-medium: 4px;
 $border-big: 4px;
+
+/*
+* breakpoints
+**/
+$S:     480px;
+$M:     768px;
+$L:     1100px;
