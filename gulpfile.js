@@ -1,16 +1,17 @@
 'use strict';
 
-var browserify = require('browserify');
-var gulp = require('gulp');
-var source = require('vinyl-source-stream');
-var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var gutil = require('gulp-util');
-var babelify = require('babelify');
-var gulpLoadPlugins = require('gulp-load-plugins');
+const browserify = require('browserify');
+const gulp = require('gulp');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
+const gutil = require('gulp-util');
+const babelify = require('babelify');
+const browserSync = require('browser-sync');
+const reload = browserSync.reload;
 
-gulp.task('javascript', function () {
+gulp.task('browserify', function () {
     // set up the browserify instance on a task basis
     var b = browserify({
         entries: './src/React/index.js',
@@ -26,4 +27,21 @@ gulp.task('javascript', function () {
         .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./web/js/'));
+});
+
+gulp.task('serve', ['browserify'], function () {
+    browserSync({
+        notify: false,
+        port: 9000,
+        server: {
+            baseDir: ['web']
+        }
+    });
+
+
+    gulp.watch([
+        'web/**/*',
+        'src/React/index.js'
+    ]).on('change', reload);
+
 });
