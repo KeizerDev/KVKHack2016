@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, NotFoundRoute, Link, IndexLink, browserHisto
 
 var routes = {
     Home: require('./routes/Home'),
-    Movie: require('./routes/Movie'),
+    Login: require('./routes/Login'),
     MovieId: require('./routes/MovieId'),
     MovieQuery: require('./routes/MovieQuery'),
     Series: require('./routes/Serie')
@@ -93,7 +93,7 @@ render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={routes.Home}/>
-            <Route path="movies" component={routes.Movie}/>
+            <Route path="login" component={routes.Login}/>
             <Route path="/movie/:id" component={routes.MovieId}/>
             <Route path="series" component={routes.Series}/>
             <Route path="/search/:query" component={routes.MovieQuery}/>
