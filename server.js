@@ -4,7 +4,8 @@ var cookieSession = require('cookie-session')
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var userController = require('./api/controllers/user');
-var authController = require('./api/controllers/auth');
+var challengeController = require('./api/controllers/challenge');
+var challengeTypeController = require('./api/controllers/challengeType');
 
 var app = express();
 var api = express.Router();
@@ -13,7 +14,7 @@ var passport = require('passport');
 app.use(cookieSession({
     name: 'session',
     keys: ['key1']
-}))
+}));
 
 mongoose.connect('mongodb://localhost:27017/fireworks');
 
@@ -31,7 +32,17 @@ app.use(bodyParser.urlencoded({
 // Create endpoint handlers for /users
 api.route('/users')
     .post(userController.postUsers)
-    .get(authController.isAuthenticated, userController.getUsers);
+    .get(userController.getUsers);
+
+// Create endpoint handlers for /users
+api.route('/challenges')
+    .post(challengeController.postChallenges)
+    .get(challengeController.getChallenges);
+
+api.route('/challenge-types')
+    .post(challengeTypeController.postChallengeTypes)
+    .get(challengeTypeController.getChallengeTypes);
+
 
 // Create endpoint handlers for /users
 api.post('/login',
