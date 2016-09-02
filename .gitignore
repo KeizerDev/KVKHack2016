@@ -17,3 +17,11 @@ node_modules
 # Generated css
 public/styles/*.css
 .DS_Store
+
+# phpstorm
+.idea
+
+# Builds
+dist
+web/js/app.js
+web/js/app.js.map

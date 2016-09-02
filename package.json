@@ -1,8 +1,8 @@
 {
-  "name": "browsertime",
+  "name": "KVKHACK",
   "version": "0.0.0",
   "private": true,
-  "description": "Browsertime",
+  "description": "KVKHACK",
   "main": "server.js",
   "dependencies": {
     "babelify": "^7.2.0",
@@ -26,5 +26,18 @@
   "scripts": {
     "start": "node server.js",
     "test": "echo \"no tests yet\" && exit 0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
