@@ -86,7 +86,7 @@ gulp.task('serve', ['browserify', 'styles', 'server'], function () {
         proxy: "localhost:3000"
     });
 
-    gulp.watch(['./server.js'], function() {
+    gulp.watch(['./server.js', './api/**/*'], function() {
         gulp.run('server')
     });
 
