@@ -40,8 +40,14 @@ gulp.task('serve', ['browserify'], function () {
 
 
     gulp.watch([
-        'web/**/*',
-        'src/React/index.js'
+        'web/**/*'
     ]).on('change', reload);
+
+    gulp.watch([
+        'src/React/**/*',
+        'src/Mojs/**/*'
+    ]).on('change', function () {
+        gulp.run(['browserify']);
+    });
 
 });

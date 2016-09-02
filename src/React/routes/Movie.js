@@ -1,6 +1,6 @@
 var React = require('react'),
-    Stars = require('../components/Stars'),
-    MovieItem = require('../components/MovieItem')
+    Stars = require('../components/Stars');
+var $ = require('jquery');
 
 var Movie = React.createClass({
 

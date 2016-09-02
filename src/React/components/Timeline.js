@@ -1,8 +1,7 @@
 var React = require('react');
 var Fire = require('../../Mojs/Items/Fire.js');
-import mojs from 'mojs'
 
-class Home extends React.Component {
+class Timeline extends React.Component {
     super() {
         console.log(mojs)
     }
@@ -27,4 +26,4 @@ class Home extends React.Component {
     }
 }
 
-module.exports = Home;
+module.exports = Timeline;

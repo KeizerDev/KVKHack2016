@@ -92,7 +92,7 @@ class PageNav extends React.Component {
 render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
-            <IndexRoute component={routes.Movie}/>
+            <IndexRoute component={routes.Home}/>
             <Route path="movies" component={routes.Movie}/>
             <Route path="/movie/:id" component={routes.MovieId}/>
             <Route path="series" component={routes.Series}/>

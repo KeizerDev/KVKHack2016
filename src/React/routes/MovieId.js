@@ -1,7 +1,4 @@
 var React = require('react')
-var WebTorrent = require('webtorrent')
-var TrailerMovieId = require('../components/TrailerMovieId')
-var DetailMovie = require('../components/DetailMovie')
 
 var MovieId = React.createClass({
 
