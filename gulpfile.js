@@ -19,6 +19,21 @@ const domain = require('domain');
 const streamify = require('gulp-streamify');
 const es6ify = require('es6ify');
 const concat = require('gulp-concat');
+const spawn = require('child_process').spawn;
+var node;
+/**
+ * $ gulp server
+ * description: launch the server. If there's a server already running, kill it.
+ */
+gulp.task('server', function() {
+    if (node) node.kill()
+    node = spawn('node', ['server.js'], {stdio: 'inherit'})
+    node.on('close', function (code) {
+        if (code === 8) {
+            gulp.log('Error detected, waiting for changes...');
+        }
+    });
+});
 
 gulp.task('browserify', function () {
     gulp.src('src/React/index.js', {read: false})
@@ -64,15 +79,16 @@ gulp.task('styles', function () {
         .pipe(reload({stream: true}));
 });
 
-gulp.task('serve', ['browserify', 'styles'], function () {
+gulp.task('serve', ['browserify', 'styles', 'server'], function () {
     browserSync({
         notify: false,
         port: 9000,
-        server: {
-            baseDir: ['web']
-        }
+        proxy: "localhost:3000"
     });
 
+    gulp.watch(['./server.js'], function() {
+        gulp.run('server')
+    });
 
     gulp.watch([
         'web/**/*'
@@ -92,3 +108,9 @@ gulp.task('serve', ['browserify', 'styles'], function () {
     });
 
 });
+
+
+// clean up if an error goes unhandled.
+process.on('exit', function() {
+    if (node) node.kill()
+})

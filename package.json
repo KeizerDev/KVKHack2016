@@ -36,6 +36,7 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.14.3",
     "browserify": "^13.1.0",
+    "child_process": "^1.0.2",
     "concat": "0.0.1-security",
     "concat-stream": "^1.5.2",
     "domain": "0.0.1",
