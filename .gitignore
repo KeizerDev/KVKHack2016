@@ -25,3 +25,5 @@ public/styles/*.css
 dist
 web/js/app.js
 web/js/app.js.map
+
+web/styles

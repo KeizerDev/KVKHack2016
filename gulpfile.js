@@ -10,6 +10,9 @@ const gutil = require('gulp-util');
 const babelify = require('babelify');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
+const sassGlob = require('gulp-sass-glob');
+const gulpLoadPlugins = require('gulp-load-plugins');
+const $ = gulpLoadPlugins();
 
 gulp.task('browserify', function () {
     // set up the browserify instance on a task basis
@@ -27,6 +30,22 @@ gulp.task('browserify', function () {
         .on('error', gutil.log)
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./web/js/'));
+});
+
+gulp.task('styles', function () {
+    return gulp.src('src/Sass/**/*.scss')
+        .pipe(sassGlob())
+        .pipe($.plumber())
+        .pipe($.sourcemaps.init())
+        .pipe($.sass.sync({
+            outputStyle: 'expanded',
+            precision: 10,
+            includePaths: ['.']
+        }).on('error', $.sass.logError))
+        .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+        .pipe($.sourcemaps.write())
+        .pipe(gulp.dest('web/styles/styles.css'))
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('serve', ['browserify'], function () {
