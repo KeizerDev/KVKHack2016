@@ -1,5 +1,5 @@
 var React = require('react');
-var mojs = require('mojs');
+var mojs = require('mo-js');
 var Timeline = require('../components/Timeline.js')
 
 class Home extends React.Component {
