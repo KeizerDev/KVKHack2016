@@ -44,11 +44,11 @@ gulp.task('styles', function () {
         }).on('error', $.sass.logError))
         .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
         .pipe($.sourcemaps.write())
-        .pipe(gulp.dest('web/styles/styles.css'))
+        .pipe(gulp.dest('web/styles'))
         .pipe(reload({stream: true}));
 });
 
-gulp.task('serve', ['browserify'], function () {
+gulp.task('serve', ['browserify', 'styles'], function () {
     browserSync({
         notify: false,
         port: 9000,
@@ -67,6 +67,12 @@ gulp.task('serve', ['browserify'], function () {
         'src/Mojs/**/*'
     ]).on('change', function () {
         gulp.run(['browserify']);
+    });
+
+    gulp.watch([
+        'src/Sass/**/*'
+    ]).on('change', function () {
+        gulp.run(['styles']);
     });
 
 });
