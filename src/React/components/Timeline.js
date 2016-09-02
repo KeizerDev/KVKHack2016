@@ -1,52 +1,80 @@
 var React = require('react');
-var TimelineItem = require('./TimelineItem.js');
+import HorizontalTimeline from 'react-horizontal-timeline';
+import SwipeableViews from 'react-swipeable-views';
 
-class Timeline extends React.Component {
-    super() {
-        console.log(mojs)
+export default class Timeline extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 0,
+      previous: 0,
+      showConfigurator: false,
+
+      // timelineConfig
+      minEventPadding: 20,
+      maxEventPadding: 120,
+      linePadding: 100,
+      labelWidth: 100,
+      fillingMotionStiffness: 150,
+      fillingMotionDamping: 25,
+      slidingMotionStiffness: 150,
+      slidingMotionDamping: 25,
+      stylesBackground: '#f8f8f8',
+      stylesForeground: '#7b9d6f',
+      stylesOutline: '#dfdfdf',
+      isTouchEnabled: true,
+      isKeyboardEnabled: true
+    };
+  }
+
+
+    componentWillMount() {
+      this.dates = this.props.content.map((entry) => entry.date);
     }
 
-    componentDidMount() {
+    componentWillReceiveProps(nextProps) {
+      this.dates = nextProps.content.map((entry) => entry.date);
     }
+
 
     render() {
+        const state = this.state;
 
-//   <div class="events-content">
-//     <ol>
-//       <li class="selected" data-date="16/01/2014">
-//         <h2>Horizontal Timeline</h2>
-//         <em>January 16th, 2014</em>
-//         <p>
-//           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam quisquam, quae, temporibus dolores porro doloribus.
-//         </p>
-//       </li>
+        const views = this.props.content.map((entry, index) => {
+          return (
+            <div className="container" key={index}>
+              { entry.component }
+            </div>
+          );
+        });
 
-//       <li data-date="28/02/2014">
-//         <!-- event description here -->
-//       </li>
 
-//       <!-- other descriptions here -->
-//     </ol>
-//   </div> <!-- .events-content -->
-// </section>
-        return (<section class="l-timeline">
-                  <div class="timeline">
-                    <div class="events-wrapper">
-                      <div class="events">
-                        <ol>
-                          <li><a href="#0" data-date="16/01/2014" class="selected">16 Jan</a></li>
-                          <li><a href="#0" data-date="28/02/2014">28 Feb</a></li>
-                        </ol>
-                        <span class="filling-line" aria-hidden="true"></span>
-                      </div>
-                    </div>
-                    <ul class="cd-timeline-navigation">
-                      <li><a href="#0" class="prev inactive">Prev</a></li>
-                      <li><a href="#0" class="next">Next</a></li>
-                    </ul>
-                </div>
-            </section>);
+        return (<div>
+
+          <HorizontalTimeline
+            fillingMotion={{ stiffness: state.fillingMotionStiffness, damping: state.fillingMotionDamping }}
+            index={this.state.value}
+            indexClick={(index) => {
+              this.setState({ value: index, previous: this.state.value });
+            }}
+            isKeyboardEnabled={state.isKeyboardEnabled}
+            isTouchEnabled={state.isTouchEnabled}
+            labelWidth={state.labelWidth}
+            linePadding={state.linePadding}
+            maxEventPadding={state.maxEventPadding}
+            minEventPadding={state.minEventPadding}
+            slidingMotion={{ stiffness: state.slidingMotionStiffness, damping: state.slidingMotionDamping }}
+            values={ this.dates } />
+            <SwipeableViews
+              index={this.state.value}
+              onChangeIndex={(value, previous) => {
+                this.setState({ value: value, previous: previous });
+              }}
+              resistance>
+              {views}
+            </SwipeableViews>
+        </div>
+);
     }
 }
-
-module.exports = Timeline;

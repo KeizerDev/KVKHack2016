@@ -1,9 +1,13 @@
 var React = require('react');
-var mojs = require('mo-js');
+// var mojs = require('mo-js');
+import Timeline from '../components/Timeline.js';
 
-class Home extends React.Component {
-    super() {
-        console.log(mojs)
+var DemoData = require('../Api/mock.js');
+
+export default class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { value: 0, previous: 0 };
     }
 
     componentDidMount() {
@@ -19,11 +23,30 @@ class Home extends React.Component {
 
     }
 
+    componentWillMount() {
+        this.data = DemoData.map((game, index) => {
+          return ({
+            date: game.date,
+            component: (
+              <div className='container' key={index}>
+                <h1>{ `The Elder Scrolls ${index + 1}:`}</h1>
+                <h2>{ game.subtitle }</h2>
+                <hr />
+                <p>{ game.content}</p>
+                <hr />
+              </div>
+            )
+          });
+        });
+    }
+
+
     render() {
         return (<div>
                 <p>Home Page</p>
+                <div style={{ width: '60%', height: '100px', margin: '0 auto' }}>
+                    <Timeline content={ this.data } />
+                </div>
             </div>);
     }
 }
-
-module.exports = Home;
