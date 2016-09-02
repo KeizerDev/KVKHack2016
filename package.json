@@ -66,6 +66,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-util": "^3.0.7",
     "node-notifier": "^4.6.1",
+    "react-addons-css-transition-group": "^15.3.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

@@ -5,22 +5,18 @@ import { Router, Route, IndexRoute, NotFoundRoute, Link, IndexLink, browserHisto
 var routes = {
     Home: require('./routes/Home'),
     Login: require('./routes/Login'),
-    MovieId: require('./routes/MovieId'),
-    MovieQuery: require('./routes/MovieQuery'),
-    Series: require('./routes/Serie')
+    Challenge: require('./routes/Challenge')
 };
 
 const ACTIVE = { color: 'red' }
 
 class Header extends React.Component {
 	render() {
-		return (<header id="header">
+		return (<header>
 					<div className="container">
 						<div className="logo">
-							<img src="/images/logo.svg" />
+							<h3>FIREWORKS</h3>
     					</div>
-                        <div className="logo-text">BrowserTime</div>
-                        <PageNav/>
 					</div>
 				</header>);
 	}
@@ -32,10 +28,6 @@ class Footer extends React.Component {
 					<div className="container">
                         <div className="row">
                             <div className="col-md-10">
-                                <pre>Bitcoin: 146z8MPUeogNxpT3ptpBWjr6rkpviGd4JG</pre>
-                            </div>
-							<div className="col-md-2">
-                                <a href="https://github.com/TeamBrowsertime/Browsertime-API" className="btn btn-info col-md-12" role="button">Add movies</a>
 							</div>
 						</div>
 					</div>
@@ -57,47 +49,12 @@ class App extends React.Component {
   }
 }
 
-class PageNav extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {text: 'Search'};
-    }
-
-    inputSubmit() {
-        this.setState({text: ''});
-
-        if(this.refs.userInput.getDOMNode().value != 'Search')
-        window.location = "../search/" + this.refs.userInput.getDOMNode().value;
-    }
-    handleChange(e) {
-        this.setState({text: e.target.value});
-    }
-    handleKeyDown(e) {
-        if (e.keyCode === 13 ) {
-            return this.inputSubmit();
-        }
-    }
-	render() {
-            // <li><Router.Link to="series">TV Series</Router.Link></li>
-    		return (
-					<ul>
-						<li><Link to="movies">Movies</Link></li>
-						<li><i className="glyphicon glyphicon-search"></i></li>
-                   </ul>
-		);
-	}
-}
-
 render((
     <Router history={browserHistory}>
         <Route path="/" component={App}>
             <IndexRoute component={routes.Home}/>
+            <Route path="challenge/:id" component={routes.Challenge}/>
             <Route path="login" component={routes.Login}/>
-            <Route path="/movie/:id" component={routes.MovieId}/>
-            <Route path="series" component={routes.Series}/>
-            <Route path="/search/:query" component={routes.MovieQuery}/>
-
             <Route path="*" component={routes.Page404} />
         </Route>
     </Router>
