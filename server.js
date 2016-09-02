@@ -4,7 +4,6 @@ var babelify = require('babelify');
 var browserify = require('browserify-middleware');
 var less = require('less-middleware');
 var nunjucks = require('nunjucks');
-var config = require('./src/config.js')
 
 // initialise express
 var app = express();
@@ -19,25 +18,9 @@ nunjucks.configure('web', {
 });
 
 // less will automatically compile matching requests for .css files
-app.use(less('public'));
+app.use(less('web'));
 // public assets are served before any dynamic requests
-app.use(express.static('public'));
-
-// common packages are precompiled on server start and cached
-app.get('/js/' + config.common.bundle, browserify(config.common.packages, {
-	cache: true,
-	precompile: true
-}));
-
-// any file in /client/scripts will automatically be browserified,
-// excluding common packages.
-app.use('/js', browserify('./src/React', {
-	external: config.common.packages,
-	transform: [babelify.configure({
-		plugins: ['object-assign']
-	})]
-}));
-
+app.use(express.static('web'));
 
 apiRouter.get('/', function(req, res) {
     // res.json();
