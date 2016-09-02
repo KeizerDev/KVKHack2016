@@ -11,3 +11,16 @@
    @media only screen and (min-width: $L) { @content; }
   }
 }
+
+
+
+
+
+  // @include MQ(L) {
+  //   margin: 6em auto;
+
+  //   &::before {
+  //     /* never visible - this is used in jQuery to check the current MQ */
+  //     content: 'desktop';
+  //   }
+  // }
