@@ -55,7 +55,7 @@ gulp.task('browserify', function () {
                     entries: [file.path]
                 })
                     .add(es6ify.runtime)
-                    .transform(babelify, {presets: ["es2015", "react"]})
+                    .transform(babelify, {presets: ["es2015", "react"], compact: true})
                     .bundle();
             });
         }))

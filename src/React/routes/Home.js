@@ -1,6 +1,5 @@
 var React = require('react');
 var mojs = require('mo-js');
-var Timeline = require('../components/Timeline.js')
 
 class Home extends React.Component {
     super() {
@@ -23,7 +22,6 @@ class Home extends React.Component {
     render() {
         return (<div>
                 <p>Home Page</p>
-                <Timeline lol="lol" />
             </div>);
     }
 }
