@@ -107,6 +107,22 @@ $week-spacing: 20px;
     opacity: 0;
   }
 
+  i {
+    display: none;
+  }
+
+  &:last-child {
+    span span {
+      display: none;
+    }
+    i {
+      display: block;
+      font-size: 30px;
+      position: relative;
+      top: 0px;
+    }
+  }
+
   &[data-selected="true"]:after {
     opacity: 1;
     transform: translate(-50%, 0);

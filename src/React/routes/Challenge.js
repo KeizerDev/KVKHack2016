@@ -9,14 +9,25 @@ import $ from 'jquery';
 var Challenge = React.createClass({
 
     getInitialState: function() {
-        return {
+        var state = {
             value: 0,
             previous: 0,
-            scrolled: 0,
+            scrolled: 5,
             data: {
-                weeks: [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
+
             }
         };
+
+        if (this.props.routeParams.id == 1) {
+            state.data.title = 'Naar de sportschool';
+            state.data.weeks = [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]];
+        }
+        else {
+            state.data.title = 'Zwemmen';
+            state.data.weeks = [[2,2,2,3,3,2,3], [2,2,2,3,2,2,2], [2,3,2,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,2,2,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
+        }
+
+        return state;
     },
 
     handleClickLeft() {
@@ -62,6 +73,7 @@ var Challenge = React.createClass({
         var challengeId = this.props.routeParams.id;
         var state = this.state;
         return (<div>
+                <h2></h2>
             <div className="timeline">
 
                 <div className="slide-left" onClick={this.handleClickLeft}></div>
@@ -75,7 +87,7 @@ var Challenge = React.createClass({
                         if (state.data.weeks.length == index-4) {
                             icon = (<i className="fa fa-gift" aria-hidden="true"></i>);
                         } else {
-                            icon = (<span>{index + 1}</span>);
+                            icon = (<span>{index + 1}<i className="fa fa-gift" aria-hidden="true"></i></span>);
                         }
                         var status = getStatusWeek(week);
                         var url = '/challenge/' + challengeId + '/' + (index + 1);
@@ -107,7 +119,7 @@ function getStatusWeek(weekarr) {
     if (noneCount.length == 7)
         return 'none';
 
-    return succesCount.length <= 3 ? 'failed' : 'success';
+    return succesCount.length < 3 ? 'failed' : 'success';
 }
 
 
