@@ -7,6 +7,18 @@ $week-spacing: 20px;
   @include clearfix;
   padding-left: 30px;
   padding-right: 30px;
+
+  @for $i from 1 through 100 {
+    $width: percentage(1 / $i)
+
+    .col-#{$i} {
+    width: $width;
+  }
+  }
+
+  &[data-count="$i"] {
+
+  }
 }
 
 .weeks-wrapper {

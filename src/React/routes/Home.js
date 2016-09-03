@@ -1,6 +1,7 @@
 var React = require('react');
 // var mojs = require('mo-js');
 import ChallengeSmall from '../components/ChallengeSmall.js';
+import { Link } from 'react-router'
 
 var DemoData = require('../Api/mock.js');
 
@@ -26,9 +27,12 @@ export default class Home extends React.Component {
 
     render() {
         return (<div>
-                    <div className="l-card">
-                        <h2>Welkom ...</h2>
-                    </div>
+                    <Link to="/present/1">
+                        <div className="alert alert-success l-card" role="alert">
+                            U heeft nog <strong>1</strong> nieuw cadeautje liggen.
+                        </div>
+                    </Link>
+                    <h2>Welkom ...</h2>
                     <div>
                        {this.state.results.map(function(result) {
                           return <ChallengeSmall key={result.key} content={result}/>;
