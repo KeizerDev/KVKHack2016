@@ -41,7 +41,7 @@ var Week = React.createClass({
             var listClass = "list-group-item ";
 
             if (dayStatus == 4) {
-                optionalTag = (<span className="tag tag-default tag-pill pull-xs-right"><i className="fa fa-gift" aria-hidden="true"></i></span>)
+                optionalTag = (<span className="tag-right-present pull-xs-right"><i className="fa fa-gift" aria-hidden="true"></i></span>)
             } else if (dayStatus == 3) {
                 listClass += 'failed';
 
