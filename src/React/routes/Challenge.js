@@ -29,7 +29,7 @@ var Challenge = React.createClass({
             state.data.min = 3;
         }
 
-        if ($(window).width() / 50 > state.data.weeks.length) {
+        if (($(window).width() + 60) / 50 > state.data.weeks.length) {
             state.scrolled = 0;
         }
 
@@ -56,7 +56,7 @@ var Challenge = React.createClass({
 
         var setScrollClasses = function () {
             $('.weeks-wrapper').each(function (delta, weeksWrapper) {
-                if ($(weeksWrapper).width() > $(window).width()) {
+                if (($(weeksWrapper).width() + 60) > $(window).width()) {
                     $(weeksWrapper).parent().addClass('needs-scrolling')
                 }
                 else {
