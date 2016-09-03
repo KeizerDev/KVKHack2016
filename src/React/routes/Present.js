@@ -25,6 +25,11 @@ var Present = React.createClass({
         browserHistory.transitionTo('/users', { userId: user.id }, query);
     },
 
+    click: function () {
+        "use strict";
+        sessionStorage.setItem('used-gift', true);
+    },
+
     render: function() {
         return (<div className="l-fullscreen">
                     <div className="l-presentanim">
@@ -32,7 +37,7 @@ var Present = React.createClass({
                             <h4>Gefeliciteerd! Je mag nu een cadeau kiezen</h4>
                             <PresentSlider/>
                             <br/>
-                            <Link to="/" className="btn btn-primary">Kies dit cadeau</Link>
+                            <Link onClick={this.click} to="/" className="btn btn-primary">Kies dit cadeau</Link>
                         </div>
                         <PresentAnim/>
                     </div>

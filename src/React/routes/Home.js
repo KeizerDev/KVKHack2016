@@ -41,12 +41,22 @@ export default class Home extends React.Component {
 
 
     render() {
+        var usedGift = sessionStorage.getItem('used-gift');
+        var giftLink;
+        if (!usedGift) {
+            giftLink = (<Link to="/present/1">
+                <div className="alert alert-success l-card" role="alert">
+                U heeft nog <strong>1</strong> nieuw cadeautje liggen.
+            </div>
+            </Link>)
+
+        }
+        else {
+            giftLink = ''
+        }
+
         return (<div>
-                    <Link to="/present/1">
-                        <div className="alert alert-success l-card" role="alert">
-                            U heeft nog <strong>1</strong> nieuw cadeautje liggen.
-                        </div>
-                    </Link>
+            {giftLink}
                     <div className="">
                         <h2 className="page-title">Welkom ...</h2>
                         <div>
