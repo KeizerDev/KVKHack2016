@@ -51,7 +51,7 @@ export default class Home extends React.Component {
                         <h2>Welkom ...</h2>
                         <div>
                            {this.state.results.map(function(result) {
-                              return <ChallengeSmall key={result.key} content={result}/>;
+                              return <ChallengeSmall key={result.id} content={result}/>;
                             })}
                         </div>
                         <div className="list-group l-card">

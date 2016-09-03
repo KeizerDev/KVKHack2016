@@ -25,7 +25,6 @@ export default class ChallengeSmall extends React.Component {
         return (<div className="list-group l-card">
                 <Link to="challenge/2/4" className="list-group-item list-group-item list-group-item-action">
                     <h5 className="list-group-item-heading text-center">{this.props.content.text}</h5>
-                    <TimelineSmall content={this.props.content.dates}/>
                 </Link>
             </div>);
     }
