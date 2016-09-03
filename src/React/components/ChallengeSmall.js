@@ -21,7 +21,7 @@ export default class ChallengeSmall extends React.Component {
 
     render() {
         const state = this.state;
-        var url = "challenge/" + this.props.content.id + "/4";
+        var url = "challenge/" + this.props.content.id + "/7";
         return (<div className="list-group l-card">
                 <Link to={url} className="list-group-item list-group-item list-group-item-action">
                     <h5 className="list-group-item-heading text-center">{this.props.content.text}</h5>
