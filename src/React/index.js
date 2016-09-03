@@ -59,13 +59,10 @@ render((
         <Route path="/" component={App}>
             <IndexRoute component={routes.Home}/>
             <Route path="challenge/:id" component={routes.Challenge}/>
-<<<<<<< HEAD
             <Route path="test/:id" component={routes.Test}/>
             <Route path="test/:id/:week" component={routes.Test}/>
-=======
             <Route path="present/:id" component={routes.Present}/>
             <Route path="present/:id/view" component={routes.PresentCheck}/>
->>>>>>> f8d4509da2501531d55897603599b71f3a29ac6b
             <Route path="login" component={routes.Login}/>
             <Route path="*" component={routes.Page404} />
         </Route>
