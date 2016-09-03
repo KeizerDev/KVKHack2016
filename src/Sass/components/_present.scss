@@ -26,12 +26,12 @@
         animation-duration: 1.2s;
         animation-fill-mode: forwards;
 
-        width: 100vw;
-        height: 100vh;
+        width: calc(100vw - 30px);
+        height: calc(100vh - 30px);
         background: gray;
         position: absolute;
-        top: 0;
-        left: 0;
+        top: 14px;
+        left: 14px;
         opacity: 0;
         z-index: -2;
     }

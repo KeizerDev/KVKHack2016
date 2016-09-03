@@ -18,3 +18,43 @@
         }
     }
 }
+
+.card {
+    text-align: center;
+    img {
+        max-height: 60vh;
+        display: block;
+        max-width: 60vw;
+        margin: 30px auto;
+    }
+
+    h2 {
+        margin-top: 30px;
+    }
+
+    .btn {
+        display: block;
+        clear: both;
+        width: 200px;
+        margin: 30px auto;
+    }
+
+    .options-wrapper {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+
+    .option {
+        width: 10px;
+        height: 10px;
+        background: gray;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 5px;
+
+        &.active {
+            background: black;
+        }
+    }
+}

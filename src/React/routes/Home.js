@@ -32,6 +32,7 @@ export default class Home extends React.Component {
                             U heeft nog <strong>1</strong> nieuw cadeautje liggen.
                         </div>
                     </Link>
+            <div className="home-wrapper">
                     <h2>Welkom ...</h2>
                     <div>
                        {this.state.results.map(function(result) {
