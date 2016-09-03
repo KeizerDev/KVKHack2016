@@ -1,5 +1,6 @@
 var React = require('react')
 var PresentAnim = require('./../components/PresentAnim');
+var PresentSlider = require('./../components/PresentSlider');
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router'
 
@@ -26,18 +27,15 @@ var Present = React.createClass({
 
     render: function() {
         return (<div className="l-fullscreen">
-                <div className="l-presentanim">
-                    <div className="card">
-                <h2>Cadeau optie 1</h2>
-            <img src="/images/ipad.jpg"></img>
-                <div className="options-wrapper">
-                <div className="option active"></div><div className="option"></div><div className="option"></div>
-                </div>
-            <Link to="/" className="btn btn-primary">Kies dit cadeau</Link>
-            </div>
-                    <PresentAnim/>
-                </div>
-            </div>);
+                    <div className="l-presentanim">
+                        <div className="card">
+                            <PresentSlider/>
+                            <br/>
+                            <Link to="/" className="btn btn-primary">Kies dit cadeau</Link>
+                        </div>
+                        <PresentAnim/>
+                    </div>
+                </div>);
     }
 });
 
