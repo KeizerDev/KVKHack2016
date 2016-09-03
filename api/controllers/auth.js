@@ -35,8 +35,11 @@ passport.use(new LocalStrategy({
     }
 ));
 
-exports.isAuthenticated = function () {
+exports.isAuthenticated = function (req, res) {
     "use strict";
+
+    console.log(req.sessionID)
+
     return true;
 };
 
