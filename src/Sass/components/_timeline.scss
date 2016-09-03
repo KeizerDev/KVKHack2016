@@ -173,15 +173,46 @@ $week-spacing: 20px;
 }
 
 .week-wrapper[data-selected="true"] {
-  margin: 0;
-  padding: 10px;
+
 }
 
-.week-wrapper[data-status="active"] {
+.week-wrapper[data-status="today"] {
   background-color: $clr-blue;
-
+  margin: 0;
+  padding: 10px;
   .week-number:before {
     background-color: $clr-blue;
   }
 }
 
+.list-group-item {
+  &.failed {
+    //color: lighten($clr-red, 20);
+
+  }
+
+  &.success {
+    background-color: lighten($clr-green, 0);
+
+  }
+
+  &.today {
+    position: relative;
+
+    &:before {
+      content: '';
+      transition: all $speed $ease;
+      width: 0;
+      height: 0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 10px solid $clr-gray-dark;
+      display: block;
+      position: absolute;
+      top: 55px;
+      left: 8px;
+      transform: translate(-50%, 10px);
+      z-index: 4;
+    }
+  }
+}
