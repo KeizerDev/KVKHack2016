@@ -55,7 +55,7 @@ gulp.task('browserify', function () {
                     entries: [file.path]
                 })
                     .add(es6ify.runtime)
-                    .transform(babelify, {presets: ["es2015", "react", "stage-0"], "plugins": ["add-module-exports", "transform-decorators-legacy"], compact: true})
+                    .transform(babelify, {presets: ["es2015", "react", "stage-0"], "plugins": ["add-module-exports", "transform-decorators-legacy", "transform-object-assign"], compact: true})
                     .bundle();
             });
 
