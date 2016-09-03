@@ -51,12 +51,12 @@ export default class Home extends React.Component {
                         <h2>Welkom ...</h2>
                         <div>
                            {this.state.results.map(function(result) {
-                              return <ChallengeSmall key={result.key} content={result}/>;
+                              return <ChallengeSmall key={result.id} content={result}/>;
                             })}
                         </div>
                         <div className="list-group l-card">
                           <Link to="/add-challenge" className="list-group-item list-group-item-action active">
-                            <h5 className="list-group-item-heading">+ Voeg een challenge toe</h5>
+                            <h5 className="list-group-item-heading no-underline">+ Voeg een challenge toe</h5>
                           </Link>
                         </div>
                     </div>
