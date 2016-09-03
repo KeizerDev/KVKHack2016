@@ -29,6 +29,7 @@ export default class Home extends React.Component {
 
 
     render() {
+
         var usedGift = sessionStorage.getItem('used-gift');
         var giftLink;
         if (!usedGift) {

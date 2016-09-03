@@ -1,5 +1,7 @@
 var React = require('react');
 // var mojs = require('mo-js');
+import { Link } from 'react-router'
+import $ from 'jquery';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -18,23 +20,52 @@ export default class Login extends React.Component {
         // });
     }
 
+    _handleLogin() {
+        var that = this;
+        var username = $('input[name="username"]').val();
+        var password = $('input[name="password"]').val();
+
+        console.log(this)
+
+        $.ajax({
+            type: "POST",
+            url: '/api/login',
+            data: {
+                username: username,
+                password: password
+            },
+            success: function(result) {
+                console.log(result)
+            },
+            error: function () {
+                this.state.error = true;
+            }
+        })
+    }
+
     render() {
+        var message = '';
+
+        if (this.state.error) {
+            message = 'Er ging iets mis met inloggen. Probeer het nogmaals.'
+        }
         return (<div>
-                <p>Home Page</p>
+                <h1 className="page-title">Inloggen</h1>
                       <form method="post" action="/api/login">
                         <div className="form-group row">
-                          <label htmlFor="name-input" className="col-xs-3 col-form-label">Username</label>
+                          <label htmlFor="name-input" className="col-xs-3 col-form-label">Gebruikersnaam</label>
                           <div className="col-xs-9">
-                            <input className="form-control" type="username" name="username" defaultValue="1-(555)-555-5555" id="name-input" />
+                            <input className="form-control" type="username" name="username" id="name-input" />
                           </div>
                         </div>
                         <div className="form-group row">
-                          <label htmlFor="password-input" className="col-xs-3 col-form-label">Password</label>
+                          <label htmlFor="password-input" className="col-xs-3 col-form-label">Wachtwoord</label>
                           <div className="col-xs-9">
-                            <input className="form-control" type="password" name="password" defaultValue="hunter2" id="password-input" />
+                            <input className="form-control" type="password" name="password" id="password-input" />
                           </div>
                         </div>
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <a className="btn btn-primary" href="#" onClick={this._handleLogin}>Inloggen</a>
+            <div className="message">{message}</div>
                       </form>
             </div>);
     }

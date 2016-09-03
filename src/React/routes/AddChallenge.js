@@ -40,6 +40,20 @@ export default class AddChallenge extends React.Component {
                 </div>
                 </div>
 
+            <div className="form-group row">
+            <label htmlFor="name-input" className="col-xs-3 col-form-label">Start datum</label>
+            <div className="col-xs-9">
+            <input className="form-control" type="text" name="title" id="name-input" placeholder="dd-mm-jjjj" />
+            </div>
+            </div>
+
+            <div className="form-group row">
+            <label htmlFor="name-input" className="col-xs-3 col-form-label">Eind datum</label>
+            <div className="col-xs-9">
+            <input className="form-control" type="text" name="title" id="name-input" placeholder="dd-mm-jjjj" />
+            </div>
+            </div>
+
                 <div className="form-group row">
                 <label htmlFor="name-input" className="col-xs-3 col-form-label">Motivatie</label>
                 <div className="col-xs-9">
