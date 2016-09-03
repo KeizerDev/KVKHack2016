@@ -59,10 +59,6 @@ gulp.task('browserify', function () {
                     .bundle();
             });
 
-            notifier.notify({
-                'title': 'browserify',
-                'message': 'Compiled!'
-            });
         }))
         .pipe(streamify(concat('app.js')))
         .pipe(gulp.dest('./web/js'));
@@ -98,6 +94,12 @@ gulp.task('serve', ['browserify', 'styles', 'server'], function () {
     gulp.watch([
         'web/**/*'
     ]).on('change', reload);
+
+    gulp.watch([
+        'web/js/app.js'
+    ]).on('change', function () {
+        notifier.notify({title: 'wooop', message: 'Done'});
+    });
 
     gulp.watch([
         'src/React/**/*',
