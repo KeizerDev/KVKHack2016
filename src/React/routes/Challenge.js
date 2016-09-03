@@ -90,13 +90,7 @@ var Challenge = React.createClass({
                 <div className="weeks-wrapper" data-count={this.state.data.weeks.length} data-scroll={this.state.scrolled}>
 
                     { this.state.data.weeks.map(function(week, index){
-                        var icon;
-
-                        if (state.data.weeks.length == index-4) {
-                            icon = (<i className="fa fa-gift" aria-hidden="true"></i>);
-                        } else {
-                            icon = (<span>{index + 1}<i className="fa fa-gift" aria-hidden="true"></i></span>);
-                        }
+                        var icon = (<span>{index + 1}<i className="fa fa-gift" aria-hidden="true"></i></span>);
                         var status = getStatusWeek(week, state.data.min);
                         var url = '/challenge/' + challengeId + '/' + (index + 1);
                         return <Link className="week-wrapper" to={url} data-selected={activeWeek == index + 1} data-status={status} data-number={index + 1}>
