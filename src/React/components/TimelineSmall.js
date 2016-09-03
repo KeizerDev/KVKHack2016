@@ -23,8 +23,8 @@ export default class TimelineSmall extends React.Component {
       stylesBackground: '#f8f8f8',
       stylesForeground: '#7b9d6f',
       stylesOutline: '#dfdfdf',
-      isTouchEnabled: true,
-      isKeyboardEnabled: true
+      isTouchEnabled: false,
+      isKeyboardEnabled: false
     };
   }
 
@@ -41,9 +41,18 @@ export default class TimelineSmall extends React.Component {
     render() {
         const state = this.state;
 
-        return (<HorizontalTimeline
+        return (<div className="l-timelinesmall" style={{width: '100%', height: '100px', margin: '0 auto' }}>
+          <HorizontalTimeline
             fillingMotion={{ stiffness: state.fillingMotionStiffness, damping: state.fillingMotionDamping }}
+            isKeyboardEnabled={state.isKeyboardEnabled}
+            isTouchEnabled={state.isTouchEnabled}
+            labelWidth={state.labelWidth}
+            linePadding={state.linePadding}
+            maxEventPadding={state.maxEventPadding}
+            minEventPadding={state.minEventPadding}
+            slidingMotion={{ stiffness: state.slidingMotionStiffness, damping: state.slidingMotionDamping }}
             index={this.state.value}
-            values={ this.dates } />);
+            values={ this.dates } />
+          </div>);
     }
 }

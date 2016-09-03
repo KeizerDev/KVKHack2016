@@ -7,7 +7,7 @@ var DemoData = require('../Api/mock.js');
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: 0, previous: 0, results: [{id: 0, text: 'Naar de sportschool', dates: ['2-2-2014']}, {id: 1, text: 'Zwemmen', dates: ['2-2-2014']}] };
+        this.state = { value: 0, previous: 0, results: [{id: 0, text: 'Naar de sportschool', dates: ['2-2-2014']}, {id: 1, text: 'Zwemmen', dates: ['2-2-2014', '1-2-2014']}] };
     }
 
     componentDidMount() {
@@ -26,12 +26,14 @@ export default class Home extends React.Component {
 
     render() {
         return (<div>
-                <p>Home Page</p>
-                <div>
-                   {this.state.results.map(function(result) {
-                      return <ChallengeSmall key={result.key} content={result}/>;
-                    })}
-                </div>
+                    <div className="l-card">
+                        <h2>Welkom ...</h2>
+                    </div>
+                    <div>
+                       {this.state.results.map(function(result) {
+                          return <ChallengeSmall key={result.key} content={result}/>;
+                        })}
+                    </div>
             </div>);
     }
 }

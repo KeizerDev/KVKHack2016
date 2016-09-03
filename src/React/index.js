@@ -11,13 +11,11 @@ var routes = {
 const ACTIVE = { color: 'red' }
 
 class Header extends React.Component {
+                    // <div className="">&lt;</div>
+
 	render() {
 		return (<header>
-					<div className="container">
-						<div className="logo">
-							<h3>FIREWORKS</h3>
-    					</div>
-					</div>
+					<h4>Fireworks</h4>
 				</header>);
 	}
 }

@@ -33,7 +33,7 @@ var Challenge = React.createClass({
         return (<div className="container-fluid">
                   <div>
                         <p>Home Page</p>
-                        <div style={{ width: '60%', height: '100px', margin: '0 auto' }}>
+                        <div style={{ width: '100%', height: '100px', margin: '0 auto' }}>
                             <Timeline content={ this.data } />
                         </div>
                     </div>
