@@ -21,7 +21,21 @@ export default class Login extends React.Component {
     render() {
         return (<div>
                 <p>Home Page</p>
-                <div><h2>Login</h2></div>
+                      <form method="post" action="/api/login">
+                        <div className="form-group row">
+                          <label htmlFor="name-input" className="col-xs-3 col-form-label">Password</label>
+                          <div className="col-xs-9">
+                            <input className="form-control" type="tel" defaultValue="1-(555)-555-5555" id="name-input" />
+                          </div>
+                        </div>
+                        <div className="form-group row">
+                          <label htmlFor="password-input" className="col-xs-3 col-form-label">Password</label>
+                          <div className="col-xs-9">
+                            <input className="form-control" type="password" defaultValue="hunter2" id="password-input" />
+                          </div>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Login</button>
+                      </form>
             </div>);
     }
 }

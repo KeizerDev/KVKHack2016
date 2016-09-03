@@ -1,6 +1,17 @@
-
 .l-timeline {
   opacity: 0;
   margin: 2em auto;
   // @include transition(opacity .2s);
+}
+
+.l-timelinesmall {
+    ul {
+        display: none;
+    }
+
+    .events-wrapper {
+        .events {
+            transform: inherit !important;
+        }
+    }
 }
