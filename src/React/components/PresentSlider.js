@@ -20,11 +20,14 @@ var PresentSlider = React.createClass({
         </div>
         <div>
           <h2>Cadeau optie 2</h2>
-          <img src="/images/ipad.jpg"></img>
+          <img src="/images/bbq.png"></img>
+          <h4>BarrelQ Houtskool bbq t.w.v. € 225,- </h4>
         </div>
-        <div><h3>4</h3></div>
-        <div><h3>5</h3></div>
-        <div><h3>6</h3></div>
+        <div>
+          <h2>Cadeau optie 2</h2>
+          <img src="/images/fitbit.png"></img>
+          <h4>FITBIT BLAZE CLASSIC BLACK t.w.v. € 229,- </h4>
+        </div>
       </Slider>
     );
   }
