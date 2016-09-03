@@ -30,6 +30,7 @@ class Footer extends React.Component {
 					<div className="container">
                         <div className="row">
                             <div className="col-md-10">
+                        {/*<p>FireWorks</p>*/}
 							</div>
 						</div>
 					</div>
