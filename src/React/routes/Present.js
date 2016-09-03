@@ -1,6 +1,7 @@
 var React = require('react')
 var PresentAnim = require('./../components/PresentAnim');
 import { browserHistory } from 'react-router';
+import { Link } from 'react-router'
 
 var Present = React.createClass({
 
@@ -26,7 +27,10 @@ var Present = React.createClass({
     render: function() {
         return (<div className="l-fullscreen">
                 <div className="l-presentanim">
-                    <div className="card"></div>
+                    <div className="card">
+
+            <Link to="/" className="btn btn primary">Kies dit cadeau</Link>
+            </div>
                     <PresentAnim/>
                 </div>
             </div>);
