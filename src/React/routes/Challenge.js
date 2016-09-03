@@ -19,12 +19,14 @@ var Challenge = React.createClass({
         };
 
         if (this.props.routeParams.id == 1) {
-            state.data.title = 'Naar de sportschool';
-            state.data.weeks = [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]];
+            state.data.title = '2x per week naar het zwembad';
+            state.data.weeks = [[2,2,2,3,3,2,3], [2,2,2,3,2,2,2], [2,3,2,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,2,2,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
+
         }
         else {
-            state.data.title = 'Zwemmen';
-            state.data.weeks = [[2,2,2,3,3,2,3], [2,2,2,3,2,2,2], [2,3,2,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,2,2,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
+            state.data.title = '3x per week naar de sportschool';
+            state.data.weeks = [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]];
+
         }
 
         if ($(window).width() / 50 > state.data.weeks.length) {
@@ -77,7 +79,7 @@ var Challenge = React.createClass({
         var challengeId = this.props.routeParams.id;
         var state = this.state;
         return (<div>
-                <h2></h2>
+                <h2 className="page-sub-title">{this.state.data.title}</h2>
             <div className="timeline">
 
                 <div className="slide-left" onClick={this.handleClickLeft}></div>

@@ -10,7 +10,7 @@ var TimelineSmall = React.createClass({
         return {
             value: 0,
             previous: 0,
-            scrolled: 0
+            scrolled: 5
         };
     },
 
