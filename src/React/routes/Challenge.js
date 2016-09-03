@@ -82,7 +82,7 @@ var Challenge = React.createClass({
         var state = this.state;
         return (<div>
             <h2 className="page-sub-title">{this.state.data.title}</h2>
-            <div className="timeline">
+            <div data-id={this.props.routeParams.id} className="timeline">
 
                 <div className="slide-left" onClick={this.handleClickLeft}></div>
                 <div className="slide-right" onClick={this.handleClickRight}></div>
