@@ -1,58 +1,99 @@
 var React = require('react');
-import HorizontalTimeline from 'react-horizontal-timeline';
-import SwipeableViews from 'react-swipeable-views';
+var Week = require('../components/Week.js');
+// var data = require('../Api/mock.js');
+import { Link } from 'react-router'
+import $ from 'jquery';
 
-export default class TimelineSmall extends React.Component {
+var TimelineSmall = React.createClass({
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0,
-      previous: 0,
-      showConfigurator: false,
+    getInitialState: function() {
+        return {
+            value: 0,
+            previous: 0,
+            scrolled: 0
+        };
+    },
 
-      // timelineConfig
-      minEventPadding: 20,
-      maxEventPadding: 120,
-      linePadding: 100,
-      labelWidth: 100,
-      fillingMotionStiffness: 150,
-      fillingMotionDamping: 25,
-      slidingMotionStiffness: 150,
-      slidingMotionDamping: 25,
-      stylesBackground: '#f8f8f8',
-      stylesForeground: '#7b9d6f',
-      stylesOutline: '#dfdfdf',
-      isTouchEnabled: false,
-      isKeyboardEnabled: false
-    };
-  }
+    handleClickLeft() {
+        console.log(this)
+
+        this.setState({
+            scrolled: this.state.scrolled - 1
+        });
+    },
+
+    handleClickRight() {
+        this.setState({
+            scrolled: this.state.scrolled + 1
+        });
+
+    },
+
+    componentWillMount: function() {
+        "use strict";
+
+        var setScrollClasses = function () {
+            $('.weeks-wrapper').each(function (delta, weeksWrapper) {
+                if ($(weeksWrapper).width() > $(window).width()) {
+                    $(weeksWrapper).parent().addClass('needs-scrolling')
+                }
+                else {
+                    $(weeksWrapper).parent().removeClass('needs-scrolling')
+                }
+            })
+        };
+
+        $(window).on('resize', function () {
+            setScrollClasses()
+        });
+
+        setTimeout(function () {
+            setScrollClasses()
+        }, 300)
+    },
+
+    render: function() {
+        var activeWeek = 4;
+        // var challengeId = this.props.routeParams.id;
+        return (<div>
+            <div className="timeline">
+
+                <div className="slide-left" onClick={this.handleClickLeft}></div>
+                <div className="slide-right" onClick={this.handleClickRight}></div>
+
+                <div className="weeks-wrapper" data-count={this.props.weeks.length} data-scroll={this.state.scrolled}>
+
+                    { this.props.weeks.map(function(week, index){
+                        var status = getStatusWeek(week);
+                        return <div className="week-wrapper" data-selected={activeWeek == index + 1} data-status={status} data-number={index + 1}>
+                            <div className="week-number">{index + 1}</div>
+                        </div>;
+                    }) }
+                </div>
+            </div>
+        </div>);
+    }
+});
 
 
-    componentWillMount() {
-      this.dates = this.props.content;
+function getStatusWeek(weekarr) {
+    var succesCount = [];
+    var noneCount = [];
+    for (var i = 0; i < weekarr.length; i++) {
+        if (weekarr[i] == 2) {
+            succesCount.push(weekarr[i])
+        } else if (weekarr[i] == 0 || weekarr[i] == 4) {
+            noneCount.push(weekarr[i])
+        } else if (weekarr[i] == 1) {
+            return 'active';
+        }
     }
 
-    componentWillReceiveProps(nextProps) {
-      this.dates = nextProps.content;
-    }
+    if (noneCount.length == 7)
+        return 'none';
 
-
-    render() {
-        const state = this.state;
-
-        return (<div className="l-timelinesmall" style={{width: '100%', height: '100px', margin: '0 auto' }}>
-          <HorizontalTimeline
-            fillingMotion={{ stiffness: state.fillingMotionStiffness, damping: state.fillingMotionDamping }}
-            isKeyboardEnabled={state.isKeyboardEnabled}
-            isTouchEnabled={state.isTouchEnabled}
-            labelWidth={state.labelWidth}
-            linePadding={state.linePadding}
-            maxEventPadding={state.maxEventPadding}
-            minEventPadding={state.minEventPadding}
-            slidingMotion={{ stiffness: state.slidingMotionStiffness, damping: state.slidingMotionDamping }}
-            index={this.state.value}
-            values={ this.dates } />
-          </div>);
-    }
+    return succesCount.length <= 3 ? 'failed' : 'success';
 }
+
+
+module.exports = TimelineSmall;
