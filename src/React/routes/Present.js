@@ -29,6 +29,7 @@ var Present = React.createClass({
         return (<div className="l-fullscreen">
                     <div className="l-presentanim">
                         <div className="card">
+                            <h4>Gefeliciteerd! Je mag nu een cadeau kiezen</h4>
                             <PresentSlider/>
                             <br/>
                             <Link to="/" className="btn btn-primary">Kies dit cadeau</Link>

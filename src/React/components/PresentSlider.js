@@ -16,6 +16,7 @@ var PresentSlider = React.createClass({
         <div>
           <h2>Cadeau optie 1</h2>
           <img src="/images/ipad.jpg"></img>
+          <h4>APPLE IPAD MINI 2 WIFI 16 GB SILVER t.w.v.€ 275,- </h4>
         </div>
         <div>
           <h2>Cadeau optie 2</h2>
