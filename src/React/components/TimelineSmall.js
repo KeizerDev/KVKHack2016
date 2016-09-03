@@ -53,7 +53,7 @@ var TimelineSmall = React.createClass({
     },
 
     render: function() {
-        var activeWeek = 4;
+        var activeWeek = 7;
         // var challengeId = this.props.routeParams.id;
         return (<div>
             <div className="timeline">
