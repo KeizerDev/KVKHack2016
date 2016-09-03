@@ -56,7 +56,7 @@ export default class Home extends React.Component {
                         </div>
                         <div className="list-group l-card">
                           <Link to="/add-challenge" className="list-group-item list-group-item-action active">
-                            <h5 className="list-group-item-heading">+ Voeg een challenge toe</h5>
+                            <h5 className="list-group-item-heading no-underline">+ Voeg een challenge toe</h5>
                           </Link>
                         </div>
                     </div>

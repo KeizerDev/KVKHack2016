@@ -16,6 +16,12 @@
             left: -1.25rem;
             right: -1.25rem;
         }
+        &.no-underline {
+            margin: 0;
+            &:after {
+                    content: initial;
+            }
+        }
     }
 }
 
