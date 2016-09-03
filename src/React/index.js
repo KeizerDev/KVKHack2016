@@ -1,11 +1,14 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, IndexRoute, NotFoundRoute, Link, IndexLink, browserHistory } from 'react-router'
+var TransitionGroup = require('react-addons-transition-group');
 
 var routes = {
     Home: require('./routes/Home'),
     Login: require('./routes/Login'),
-    Challenge: require('./routes/Challenge')
+    Challenge: require('./routes/Challenge'),
+    Present: require('./routes/Present'),
+    PresentCheck: require('./routes/PresentCheck')
 };
 
 const ACTIVE = { color: 'red' }
@@ -15,7 +18,7 @@ class Header extends React.Component {
 
 	render() {
 		return (<header>
-					<h4>Fireworks</h4>
+					<h4>FireWorks</h4>
 				</header>);
 	}
 }
@@ -39,7 +42,10 @@ class App extends React.Component {
         <div className="page">
             <Header />
             <div className="">
+            <TransitionGroup>
+
                 {this.props.children}
+                </TransitionGroup>
             </div>
             <Footer/>
         </div>
@@ -52,6 +58,8 @@ render((
         <Route path="/" component={App}>
             <IndexRoute component={routes.Home}/>
             <Route path="challenge/:id" component={routes.Challenge}/>
+            <Route path="present/:id" component={routes.Present}/>
+            <Route path="present/:id/view" component={routes.PresentCheck}/>
             <Route path="login" component={routes.Login}/>
             <Route path="*" component={routes.Page404} />
         </Route>

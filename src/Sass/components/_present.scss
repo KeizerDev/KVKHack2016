@@ -1,0 +1,83 @@
+.l-presentanim {
+    .s0{fill:#fff100;}.s1{fill:none;stroke-dasharray:2.5;stroke-width:0.6;stroke:#e96793;}
+
+    .gift {
+        transform-origin: 100% 190%;
+        animation-name: drop;
+        z-index: 2;
+        animation-duration: 1s;
+        transform: translate(-60px, -553px) scale(.6, .6);
+    }
+
+    /* The element to apply the animation to */
+    .franjes {
+        transform-origin: 100% 129%;
+        animation-name: franje;
+            animation-delay: .2s;
+        animation-duration: .6s;
+    }
+
+    .card {
+        animation-name: card;
+        animation-delay: 1.7s;
+        animation-duration: 1.2s;
+        animation-fill-mode: forwards;
+
+        width: 170px;
+        height: 190px;
+        background: gray;
+        position: absolute;
+        top: 280px;
+        left: 140px;
+        opacity: 0;
+        z-index: -2;
+    }
+
+    .top {
+            transform-origin: 100% 129%;
+        animation-name: top;
+            animation-delay: .5s;
+            animation-fill-mode: forwards;
+        animation-duration: .9s;
+        transform: rotate(0deg) translate(0px, -13px);
+    }
+}
+
+@keyframes drop {
+    0%   {
+        opacity: 0;
+        transform: translate(-120px, -653px) scale(.5, .5) rotate(3deg);
+    }
+
+    30%  {
+        opacity: 1;
+        transform: translate(-120px, -533px) scale(.5, .45);
+    }
+
+    80% {
+        transform: translate(-120px, -553px) scale(.5, .5) rotate(-1deg);
+    }
+
+    100% {
+        transform: translate(-60px, -553px) scale(.6, .6) rotate(0deg);
+
+    }
+}
+
+@keyframes top {
+    0%   {transform: rotate(0deg) translate(0px, -13px);}
+    50%  {transform: rotate(0deg) translate(0px, -13px);}
+    100% {transform: rotate(86deg) translate(421px, 11px);}
+}
+
+@keyframes franje {
+    0%   {transform: scale(1, 1);}
+    50%  {transform: scale(1, 0.87);}
+    100% {transform: scale(1, 1);}
+}
+
+@keyframes card {
+    0%   {opacity: 0; transform: translateY(0px);}
+    50% {opacity: 1; transform: translateY(-240px) scale(1,1); z-index: -1; background-color: gray;}
+    100% {opacity: 1; transform: translateY(-100px) scale(3,3); z-index: 4; background-color: white;}
+}
