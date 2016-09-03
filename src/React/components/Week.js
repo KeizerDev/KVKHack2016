@@ -28,21 +28,26 @@ var Week = React.createClass({
         for (var i = 0; i < dayNamesArr.length; i++) {
             var dayName = dayNamesArr[i],
                 dayStatus = dayStatusArr[i],
-                optionalTag = "";
+                optionalTag = "",
+                backgroundColor = "#eeeeec";
 
             if (dayStatus == 4) {
                 optionalTag = (<span className="tag tag-default tag-pill pull-xs-right"><i className="fa fa-gift" aria-hidden="true"></i></span>)
             } else if (dayStatus == 3) {
+                backgroundColor = "red"
+
             } else if (dayStatus == 2) {
+                backgroundColor = "green"
+
             } else if (dayStatus == 1) {
+                backgroundColor = "#729fcf"
 
             } else if (dayStatus == 0) {
-
             }
-            daysofweek.push(<li styles={{backgroundColor: '#4fe'}} className="list-group-item">{dayName}{optionalTag}</li>)
+            daysofweek.push(<li style={{backgroundColor: backgroundColor}} className="list-group-item">{dayName}{optionalTag}</li>)
         }
 
-        return (<ul className="list-group">
+        return (<ul className="list-group l-card">
                 {daysofweek}
             </ul>);
     }
