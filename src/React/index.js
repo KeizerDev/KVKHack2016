@@ -8,7 +8,8 @@ var routes = {
     Login: require('./routes/Login'),
     Challenge: require('./routes/Challenge'),
     Present: require('./routes/Present'),
-    PresentCheck: require('./routes/PresentCheck')
+    PresentCheck: require('./routes/PresentCheck'),
+    AddChallenge: require('./routes/AddChallenge')
 };
 
 const ACTIVE = { color: 'red' }
@@ -62,6 +63,7 @@ render((
             <Route path="present/:id" component={routes.Present}/>
             <Route path="present/:id/view" component={routes.PresentCheck}/>
             <Route path="login" component={routes.Login}/>
+            <Route path="add-challenge" component={routes.AddChallenge}/>
             <Route path="*" component={routes.Page404} />
         </Route>
     </Router>

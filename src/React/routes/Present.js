@@ -28,8 +28,12 @@ var Present = React.createClass({
         return (<div className="l-fullscreen">
                 <div className="l-presentanim">
                     <div className="card">
-
-            <Link to="/" className="btn btn primary">Kies dit cadeau</Link>
+                <h2>Cadeau optie 1</h2>
+            <img src="/images/ipad.jpg"></img>
+                <div className="options-wrapper">
+                <div className="option active"></div><div className="option"></div><div className="option"></div>
+                </div>
+            <Link to="/" className="btn btn-primary">Kies dit cadeau</Link>
             </div>
                     <PresentAnim/>
                 </div>
