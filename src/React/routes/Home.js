@@ -54,9 +54,9 @@ export default class Home extends React.Component {
                               return <ChallengeSmall key={result.key} content={result}/>;
                             })}
                         </div>
-                        <div class="list-group l-card">
-                          <Link to="/add-challenge" class="list-group-item list-group-item-action active">
-                            <h5 class="list-group-item-heading">+ Voeg een challenge toe</h5>
+                        <div className="list-group l-card">
+                          <Link to="/add-challenge" className="list-group-item list-group-item-action active">
+                            <h5 className="list-group-item-heading">+ Voeg een challenge toe</h5>
                           </Link>
                         </div>
                     </div>
