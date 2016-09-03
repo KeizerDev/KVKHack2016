@@ -54,6 +54,7 @@ var TimelineSmall = React.createClass({
 
     render: function() {
         var activeWeek = 7;
+        var min = this.props.min
         // var challengeId = this.props.routeParams.id;
         return (<div>
             <div className="timeline">
@@ -64,7 +65,7 @@ var TimelineSmall = React.createClass({
                 <div className="weeks-wrapper" data-count={this.props.weeks.length} data-scroll={this.state.scrolled}>
 
                     { this.props.weeks.map(function(week, index){
-                        var status = getStatusWeek(week);
+                        var status = getStatusWeek(week, min);
                         return <div className="week-wrapper" data-selected={activeWeek == index + 1} data-status={status} data-number={index + 1}>
                             <div className="week-number">{index + 1}</div>
                         </div>;
@@ -76,7 +77,7 @@ var TimelineSmall = React.createClass({
 });
 
 
-function getStatusWeek(weekarr) {
+function getStatusWeek(weekarr, min) {
     var succesCount = [];
     var noneCount = [];
     for (var i = 0; i < weekarr.length; i++) {
@@ -92,7 +93,7 @@ function getStatusWeek(weekarr) {
     if (noneCount.length == 7)
         return 'none';
 
-    return succesCount.length <= 3 ? 'failed' : 'success';
+    return succesCount.length <= min ? 'failed' : 'success';
 }
 
 

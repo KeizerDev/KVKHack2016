@@ -1,53 +1,16 @@
-module.exports = [
-  {
-    status: 'success'
-  },
-  {
-    status: 'success'
-  },
-  {
-    status: 'success'
-  },
-  {
-    status: 'success'
-  },
-  {
-    status: 'success'
-  },
-  {
-    status: 'failed'
-  },
-  {
-    status: 'success'
-  },
-  {
-    status: 'success'
-  },
-  {
-    status: 'success'
-  },
-  {
-    status: 'success'
-  },
-  {
-    status: 'active'
-  },
-  {
-    status: 'none'
-  },
-  {
-    status: 'none'
-  },
-  {
-    status: 'none'
-  },
-  {
-    status: 'none'
-  },
-  {
-    status: 'none'
-  },
-  {
-    status: 'none'
-  }
-];
+module.exports = {
+ results: [
+      {
+          id: 0,
+          text: '3x per week naar de sportschool',
+          weeks: [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]],
+          min: 3
+      },
+      {
+          id: 1,
+          text: '2x per week naar het zwembad',
+          weeks: [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]],
+          min: 2
+      }
+  ]
+};
