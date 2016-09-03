@@ -1,3 +1,10 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
 
 /*
 * Colors
@@ -6,8 +13,11 @@ $clr-gold: #FBB936; // Goud
 $clr-green: #40BA4C; // Licht Groen
 $clr-green-dark: #00674C; // Donker Groen
 $clr-gray-dark: #231F20; // Donker Grijs
+$clr-gray-light: #eeeeec;
 $clr-white: #fff;
-
+$clr-blue: #729fcf;
+$clr-gray-middle: #ccc;
+$clr-red: red;
 
 /*
 * Paddings
@@ -37,3 +47,6 @@ $border-big: 4px;
 $S:     480px;
 $M:     768px;
 $L:     1100px;
+
+$speed: .3s;
+$ease: cubic-bezier(.61,.21,.54,.77);

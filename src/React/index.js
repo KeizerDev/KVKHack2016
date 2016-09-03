@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, NotFoundRoute, Link, IndexLink, browserHisto
 
 var routes = {
     Home: require('./routes/Home'),
+    Test: require('./routes/Test'),
     Login: require('./routes/Login'),
     Challenge: require('./routes/Challenge')
 };
@@ -52,6 +53,8 @@ render((
         <Route path="/" component={App}>
             <IndexRoute component={routes.Home}/>
             <Route path="challenge/:id" component={routes.Challenge}/>
+            <Route path="test/:id" component={routes.Test}/>
+            <Route path="test/:id/:week" component={routes.Test}/>
             <Route path="login" component={routes.Login}/>
             <Route path="*" component={routes.Page404} />
         </Route>

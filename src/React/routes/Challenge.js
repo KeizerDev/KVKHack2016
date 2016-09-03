@@ -14,11 +14,13 @@ var Challenge = React.createClass({
 
     componentWillMount: function() {
         this.data = DemoData.map((game, index) => {
+            console.log(game)
+
           return ({
             date: game.date,
             component: (
               <div className='container' key={index}>
-                <h1>{ `The Elder Scrolls ${index + 1}:`}</h1>
+                <h1>{ `The Elder Scrolls`}</h1>
                 <h2>{ game.subtitle }</h2>
                 <hr />
                 <p>{ game.content}</p>
