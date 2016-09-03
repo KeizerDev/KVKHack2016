@@ -56,6 +56,7 @@ var TimelineSmall = React.createClass({
         var activeWeek = 7;
         var min = this.props.min
         // var challengeId = this.props.routeParams.id;
+        console.log(min)
         return (<div>
             <div className="timeline">
 
@@ -93,8 +94,7 @@ function getStatusWeek(weekarr, min) {
     if (noneCount.length == 7)
         return 'none';
 
-    return succesCount.length <= min ? 'failed' : 'success';
+    return succesCount.length < min ? 'failed' : 'success';
 }
-
 
 module.exports = TimelineSmall;
