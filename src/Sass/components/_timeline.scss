@@ -177,11 +177,11 @@ $week-spacing: 20px;
 }
 
 .week-wrapper[data-status="today"] {
-  background-color: $clr-blue;
+  background-color: darken($clr-gray-middle, 10);
   margin: 0;
   padding: 10px;
   .week-number:before {
-    background-color: $clr-blue;
+    background-color: darken($clr-gray-middle, 10);
   }
 }
 
@@ -197,7 +197,10 @@ $week-spacing: 20px;
   }
 
   &.today {
+    //border: 5px solid  darken($clr-gray-middle, 10);
+    box-shadow: 0 0 10px 2px rgba(black, .15);
     position: relative;
+    z-index: 3;
 
     &:before {
       content: '';
@@ -209,7 +212,7 @@ $week-spacing: 20px;
       border-left: 10px solid $clr-gray-dark;
       display: block;
       position: absolute;
-      top: 55px;
+      top: 5px;
       left: 8px;
       transform: translate(-50%, 10px);
       z-index: 4;

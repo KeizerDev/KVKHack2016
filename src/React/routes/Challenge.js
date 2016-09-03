@@ -60,6 +60,7 @@ var Challenge = React.createClass({
     render: function() {
         var activeWeek = this.props.routeParams.week;
         var challengeId = this.props.routeParams.id;
+        var state = this.state;
         return (<div>
             <div className="timeline">
 
@@ -69,10 +70,17 @@ var Challenge = React.createClass({
                 <div className="weeks-wrapper" data-count={this.state.data.weeks.length} data-scroll={this.state.scrolled}>
 
                     { this.state.data.weeks.map(function(week, index){
+                        var icon;
+
+                        if (state.data.weeks.length == index-4) {
+                            icon = (<i className="fa fa-gift" aria-hidden="true"></i>);
+                        } else {
+                            icon = (<span>{index + 1}</span>);
+                        }
                         var status = getStatusWeek(week);
                         var url = '/challenge/' + challengeId + '/' + (index + 1);
                         return <Link className="week-wrapper" to={url} data-selected={activeWeek == index + 1} data-status={status} data-number={index + 1}>
-                            <div className="week-number">{index + 1}</div>
+                            <div className="week-number">{icon}</div>
                         </Link>;
                     }) }
                 </div>
