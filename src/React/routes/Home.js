@@ -8,7 +8,7 @@ var DemoData = require('../Api/mock.js');
 export default class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: 0, previous: 0, results: [{id: 0, text: 'Naar de sportschool', dates: ['2-2-2014']}, {id: 1, text: 'Zwemmen', dates: ['2-2-2014', '1-2-2014']}] };
+        this.state = { value: 0, previous: 0, results: [{id: 0, text: 'Naar de sportschool', weeks: [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]}, {id: 1, text: 'Zwemmen', weeks: [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]}] };
     }
 
     componentDidMount() {
@@ -33,15 +33,15 @@ export default class Home extends React.Component {
                         </div>
                     </Link>
                     <h2>Welkom ...</h2>
-        <Link to="/add-challenge">
-            <div className="btn btn-primary">
-            Maak een nieuwe challenge
-        </div>
-        </Link>
                     <div>
                        {this.state.results.map(function(result) {
                           return <ChallengeSmall key={result.key} content={result}/>;
                         })}
+                    </div>
+                    <div class="list-group l-card">
+                      <Link to="/add-challenge" class="list-group-item list-group-item-action active">
+                        <h5 class="list-group-item-heading">+ Voeg een challenge toe</h5>
+                      </Link>
                     </div>
             </div>);
     }

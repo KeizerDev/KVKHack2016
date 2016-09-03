@@ -45,7 +45,7 @@ class App extends React.Component {
             <TransitionGroup>
 
                 {this.props.children}
-                </TransitionGroup>
+            </TransitionGroup>
             </div>
             <Footer/>
         </div>
