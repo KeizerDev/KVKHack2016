@@ -9,15 +9,10 @@ $week-spacing: 20px;
   padding-right: 30px;
 
   @for $i from 1 through 100 {
-    $width: percentage(1 / $i)
 
-    .col-#{$i} {
-    width: $width;
-  }
-  }
+    &[data-count="#{$i}"] {
 
-  &[data-count="$i"] {
-
+    }
   }
 }
 
