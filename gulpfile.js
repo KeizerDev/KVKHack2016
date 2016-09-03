@@ -58,6 +58,11 @@ gulp.task('browserify', function () {
                     .transform(babelify, {presets: ["es2015", "react", "stage-0"], "plugins": ["add-module-exports", "transform-decorators-legacy"], compact: true})
                     .bundle();
             });
+
+            notifier.notify({
+                'title': 'browserify',
+                'message': 'Compiled!'
+            });
         }))
         .pipe(streamify(concat('app.js')))
         .pipe(gulp.dest('./web/js'));
