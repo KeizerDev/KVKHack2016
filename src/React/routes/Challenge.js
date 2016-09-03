@@ -5,6 +5,8 @@ var Week = require('../components/Week.js');
 // var data = require('../Api/mock.js');
 import { Link } from 'react-router'
 import $ from 'jquery';
+var DemoData = require('../Api/mock.js');
+
 
 var Challenge = React.createClass({
 
@@ -19,14 +21,14 @@ var Challenge = React.createClass({
         };
 
         if (this.props.routeParams.id == 1) {
-            state.data.title = '2x per week naar het zwembad';
-            state.data.weeks = [[2,2,2,3,3,2,3], [2,2,2,3,2,2,2], [2,3,2,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,2,2,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
-            state.data.min = 2;
+            state.data.title = DemoData.results[1].title;
+            state.data.weeks = DemoData.results[1].weeks;
+            state.data.min = DemoData.results[1].min;
         }
         else {
-            state.data.title = '3x per week naar de sportschool';
-            state.data.weeks = [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]];
-            state.data.min = 3;
+            state.data.title = DemoData.results[0].title;
+            state.data.weeks = DemoData.results[0].weeks;
+            state.data.min = DemoData.results[0].min;
         }
 
         if ($(window).width() / 50 > state.data.weeks.length) {

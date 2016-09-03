@@ -10,19 +10,7 @@ export default class Home extends React.Component {
         super(props);
         this.state = {
             value: 0,
-            previous: 0,
-            results: [
-                {
-                    id: 0,
-                    text: '3x per week naar de sportschool',
-                    weeks: [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
-                },
-                {
-                    id: 1,
-                    text: '2x per week naar het zwembad',
-                    weeks: [[2,2,2,3,3,2,3], [2,2,2,3,2,2,2], [2,3,2,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,2,2,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
-                }
-            ]
+            previous: 0
         };
     }
 
@@ -50,7 +38,7 @@ export default class Home extends React.Component {
                     <div className="">
                         <h2 className="page-title">Welkom ...</h2>
                         <div>
-                           {this.state.results.map(function(result) {
+                           {DemoData.results.map(function(result) {
                               return <ChallengeSmall key={result.id} content={result}/>;
                             })}
                         </div>

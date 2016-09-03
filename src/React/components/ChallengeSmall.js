@@ -25,7 +25,7 @@ export default class ChallengeSmall extends React.Component {
         return (<div className="list-group l-card">
                 <Link to={url} className="list-group-item list-group-item list-group-item-action">
                     <h5 className="list-group-item-heading text-center">{this.props.content.text}</h5>
-                    <TimelineSmall weeks={this.props.content.weeks}/>
+                    <TimelineSmall weeks={this.props.content.weeks} limit={this.props.content.min} />
                 </Link>
             </div>);
     }
