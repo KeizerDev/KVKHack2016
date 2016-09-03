@@ -21,12 +21,12 @@ var Challenge = React.createClass({
         };
 
         if (this.props.routeParams.id == 1) {
-            state.data.title = DemoData.results[1].title;
+            state.data.title = DemoData.results[1].text;
             state.data.weeks = DemoData.results[1].weeks;
             state.data.min = DemoData.results[1].min;
         }
         else {
-            state.data.title = DemoData.results[0].title;
+            state.data.title = DemoData.results[0].text;
             state.data.weeks = DemoData.results[0].weeks;
             state.data.min = DemoData.results[0].min;
         }
