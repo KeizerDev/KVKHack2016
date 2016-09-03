@@ -4,8 +4,7 @@ var Week = React.createClass({
 
     getInitialState: function() {
         return {
-            daysArr: ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag'],
-            data: {weekofyearnumber: 3, daysstatus: [3,2,1,0,0,4,0]}
+            daysArr: ['Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag', 'Zondag']
         };
         /*
         4: presentday (not done yet)
@@ -19,8 +18,16 @@ var Week = React.createClass({
     componentDidMount: function() {
     },
 
+    componentWillMount: function() {
+      this.content = this.props.content;
+    },
+
+    componentWillReceiveProps: function(nextProps) {
+      this.content = nextProps.content;
+    },
+
     render: function() {
-        var dayStatusArr = this.state.data.daysstatus,
+        var dayStatusArr = this.content,
             dayNamesArr = this.state.daysArr,
             daysofweek = [];
 
