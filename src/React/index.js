@@ -5,7 +5,6 @@ var TransitionGroup = require('react-addons-transition-group');
 
 var routes = {
     Home: require('./routes/Home'),
-    Test: require('./routes/Test'),
     Login: require('./routes/Login'),
     Challenge: require('./routes/Challenge'),
     Present: require('./routes/Present'),
@@ -59,8 +58,7 @@ render((
         <Route path="/" component={App}>
             <IndexRoute component={routes.Home}/>
             <Route path="challenge/:id" component={routes.Challenge}/>
-            <Route path="test/:id" component={routes.Test}/>
-            <Route path="test/:id/:week" component={routes.Test}/>
+            <Route path="challenge/:id/:week" component={routes.Challenge}/>
             <Route path="present/:id" component={routes.Present}/>
             <Route path="present/:id/view" component={routes.PresentCheck}/>
             <Route path="login" component={routes.Login}/>
