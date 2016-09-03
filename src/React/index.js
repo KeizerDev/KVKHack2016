@@ -19,7 +19,7 @@ class Header extends React.Component {
 
 	render() {
 		return (<header>
-					<h4>FireWorks</h4>
+					<Link to="/"><h4>FireWorks</h4></Link>
 				</header>);
 	}
 }

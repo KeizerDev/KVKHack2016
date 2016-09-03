@@ -19,12 +19,14 @@ var Challenge = React.createClass({
         };
 
         if (this.props.routeParams.id == 1) {
-            state.data.title = 'Naar de sportschool';
-            state.data.weeks = [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]];
+            state.data.title = '2x per week naar het zwembad';
+            state.data.weeks = [[2,2,2,3,3,2,3], [2,2,2,3,2,2,2], [2,3,2,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,2,2,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
+            state.data.min = 2;
         }
         else {
-            state.data.title = 'Zwemmen';
-            state.data.weeks = [[2,2,2,3,3,2,3], [2,2,2,3,2,2,2], [2,3,2,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,2,2,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]]
+            state.data.title = '3x per week naar de sportschool';
+            state.data.weeks = [[2,2,3,3,3,3,3], [2,2,3,3,3,2,2], [2,3,3,2,3,3,2], [3,2,3,3,2,2,0], [2,2,3,3,3,2,2], [2,3,3,3,3,3,2], [3,2,3,3,2,1,0], [0,0,0,0,0,0,0], [0,0,0,0,0,0,4]];
+            state.data.min = 3;
         }
 
         if ($(window).width() / 50 > state.data.weeks.length) {
@@ -77,7 +79,7 @@ var Challenge = React.createClass({
         var challengeId = this.props.routeParams.id;
         var state = this.state;
         return (<div>
-                <h2></h2>
+                <h2 className="page-sub-title">{this.state.data.title}</h2>
             <div className="timeline">
 
                 <div className="slide-left" onClick={this.handleClickLeft}></div>
@@ -93,7 +95,7 @@ var Challenge = React.createClass({
                         } else {
                             icon = (<span>{index + 1}<i className="fa fa-gift" aria-hidden="true"></i></span>);
                         }
-                        var status = getStatusWeek(week);
+                        var status = getStatusWeek(week, state.data.min);
                         var url = '/challenge/' + challengeId + '/' + (index + 1);
                         return <Link className="week-wrapper" to={url} data-selected={activeWeek == index + 1} data-status={status} data-number={index + 1}>
                             <div className="week-number">{icon}</div>
@@ -107,7 +109,7 @@ var Challenge = React.createClass({
 });
 
 
-function getStatusWeek(weekarr) {
+function getStatusWeek(weekarr, min) {
     var succesCount = [];
     var noneCount = [];
     for (var i = 0; i < weekarr.length; i++) {
@@ -123,7 +125,7 @@ function getStatusWeek(weekarr) {
     if (noneCount.length == 7)
         return 'none';
 
-    return succesCount.length < 3 ? 'failed' : 'success';
+    return succesCount.length < min ? 'failed' : 'success';
 }
 
 

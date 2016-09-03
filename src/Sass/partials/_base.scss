@@ -51,11 +51,16 @@ $L:     1100px;
 $speed: .3s;
 $ease: cubic-bezier(.61,.21,.54,.77);
 
-
+.page-sub-title,
 .page-title {
   margin: 20px;
 }
 
 form {
   margin: 20px;
+}
+
+header a {
+  color: black !important;
+  text-decoration: none !important;
 }

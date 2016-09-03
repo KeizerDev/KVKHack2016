@@ -235,3 +235,15 @@ $week-spacing: 20px;
     }
   }
 }
+
+.list-group.l-card {
+  .slide-left, .slide-right {
+    &:before, &:after {
+      display: none;
+    }
+  }
+
+  .slide-right {
+    background: none;
+  }
+}
