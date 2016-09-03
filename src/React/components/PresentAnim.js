@@ -21,7 +21,7 @@ export default class PresentAnim extends React.Component {
     render() {
         const state = this.state;
 
-        return (<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" className="" viewBox="0 0 400 500" version="1.1">
+        return (<svg xmlns="http://www.w3.org/2000/svg" className="" viewBox="0 0 400 500" version="1.1">
         <g transform="translate(0,-552.36216)" className="gift">
             <rect width="358.6" height="337.2" x="22.3" y="712.1" fill="#e96793"/>
             <rect width="25" height="335" x="189.1" y="712.8" fill="#fff100"/>
