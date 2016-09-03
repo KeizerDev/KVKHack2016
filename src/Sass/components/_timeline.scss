@@ -255,3 +255,35 @@ $week-spacing: 20px;
     width: 100%;
   }
 }
+
+.timeline[data-id="0"] .week-wrapper:last-child .week-number > span {
+  position: relative;
+  display: block;
+
+  &:before {
+    content: '';
+    width: 40px;
+    height: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    background: red;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 40;
+  }
+
+  &:after {
+    content: '';
+    width: 40px;
+    height: 3px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    background: red;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    z-index: 40;
+  }
+}
+
