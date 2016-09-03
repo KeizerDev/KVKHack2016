@@ -6,10 +6,12 @@ var bodyParser = require('body-parser');
 var userController = require('./api/controllers/user');
 var challengeController = require('./api/controllers/challenge');
 var challengeTypeController = require('./api/controllers/challengeType');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var User = require('./api/models/user');
 
 var app = express();
 var api = express.Router();
-var passport = require('passport');
 
 app.use(cookieSession({
     name: 'session',
@@ -22,6 +24,35 @@ nunjucks.configure('web', {
     express: app
 });
 
+passport.serializeUser(function(user, done) {
+    done(null, user._id);
+    // if you use Model.id as your idAttribute maybe you'd want
+    // done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
+passport.use(new LocalStrategy(
+    function(username, password, done) {
+        User.findOne({ username: username }, function(err, user) {
+            if (err) { return done(err); }
+
+            if (!user) {
+                return done(null, false, { message: 'Incorrect username.' });
+            }
+
+            if (user.verifyPassword(password)) {
+                return done(null, user);
+            }
+
+            return done(null, false, { message: 'Incorrect password.' });
+        });
+    }
+));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static('web'));
