@@ -66,7 +66,7 @@ var Challenge = React.createClass({
                 <div className="weeks-wrapper" data-count={data.length} data-scroll={this.state.scrolled}>
 
                     { data.map(function(week, index){
-                        var url = '/test/' + challengeId + '/' + (index + 1);
+                        var url = '/challenge/' + challengeId + '/' + (index + 1);
                         return <Link className="week-wrapper" to={url} data-selected={activeWeek == index + 1} data-status={week.status} data-number={index + 1}>
                             <div className="week-number">{index + 1}</div>
                         </Link>;
