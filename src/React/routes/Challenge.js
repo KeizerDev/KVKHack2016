@@ -92,7 +92,7 @@ function getStatusWeek(weekarr) {
         } else if (weekarr[i] == 0 || weekarr[i] == 4) {
             noneCount.push(weekarr[i])
         } else if (weekarr[i] == 1) {
-            return 'active';
+            return 'today';
         }
     }
 
